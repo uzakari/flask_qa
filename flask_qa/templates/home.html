@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% block title%} Questions and Answers {% endblock %}
+{% block content%}
+<div class="main-container">
+
+    <!--end of section-->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center text-center section-intro">
+                <div class="col-12 col-md-9 col-lg-8">
+                    <h2 class="display-4">Answered Questions</h2>
+                    <hr>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+            <ul class="nav" id="myTab" role="tablist">
+                {%for question in questions%}
+                <li>
+                    <a class="active card" id="tab-1" data-toggle="tab" href="{{url_for('main.questions', question_id=question.id)}}" role="tab" aria-controls="home"
+                        aria-selected="true">
+                        <div class="card-body">
+                            <h5>{{question.question}}</h5>
+                            <p>
+                                Asked by: {{question.asker.name}}
+                            </p>
+                            <p>
+                                Answered by: {{question.expert.name}}
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+
+</div>
+
+{% endblock %}

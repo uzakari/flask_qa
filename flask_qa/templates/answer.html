@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% block  title%}
+Answers
+{% endblock  %}%}
+{% block content%}
+<div class="main-container">
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <div class="card card-lg w-100">
+                        <div class="row no-gutters justify-content-between card-header">
+                            <div class="col-auto">
+
+                                <h5>{{question.question}}?</h5>
+
+                            </div>
+                            <!--end of col-->
+                            <!--end of col-->
+                        </div>
+                        <!--end of row-->
+                        <div class="card-body">
+                            <div class="row no-gutters justify-content-between">
+                                <!--end of col-->
+                                <div class="col-12 col-md-4">
+                                    <form method="POST" action="{{url_for('main.answer', question_id=question.id)}}">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">Answer</label>
+                                            <textarea type="email" name="answer" class="form-control form-control-lg"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter question"> </textarea>
+                                            <small id="emailHelp" class="form-text">Answer Away</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+                                    </form>
+
+                                </div>
+                                <!--end of col-->
+                            </div>
+                            <!--end of row-->
+                        </div>
+
+                    </div>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+</div>
+
+
+{% endblock%}

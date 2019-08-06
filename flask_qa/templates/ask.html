@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+
+{% block title%} Ask {% endblock %}
+
+{% block content%}
+<div class="main-container">
+    <section class="bg-white">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-auto order-md-2 mb-4">
+                    <h5>Ask A Question</h5>
+                    <hr>
+                    <form method="POST" action="{{url_for('main.ask')}}">
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Quetion</label>
+                            <textarea name="question" class="form-control form-control-lg" id="exampleInputEmail"
+                                aria-describedby="emailHelp" placeholder="Enter question"> </textarea>
+                            <small id="emailHelp" class="form-text">Ask Away
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword">Password</label>
+                            <select name="expert" class="form-control form-control-lg" id="Expert">
+                                {% for expert in experts%}
+                                <option value="{{expert.id}}" >{{expert.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!--end of row-->
+    </section>
+</div>
+<!--end of container-->
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title> {% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A robust suite of app and landing page templates by Medium Rare">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500" rel="stylesheet">
+        <link href="{{url_for('static', filename='theme.css')}}" rel="stylesheet" type="text/css" media="all" />
+    </head>
+
+    <body>
+
+        <div class="nav-container">
+            <div class="bg-dark navbar-dark" data-sticky="top">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="icon-menu h4"></i>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="{{url_for('main.index')}}" class="nav-link">Home</a>
+                                </li>
+                                {% if current_user.admin%}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="{{url_for('main.users')}}" id="pagesDropdown"
+                                        role="button" data-toggle="dropdown">Users</a>
+                                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+
+                                        <a class="dropdown-item" href="pages-landing.html">
+                                            <span class="h6 mb-0">Landing Pages</span>
+                                            <p class="text-small text-muted">Showcase your product in style</p>
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
+
+
+                                        <a class="dropdown-item" href="pages-app.html">
+                                            <span class="h6 mb-0">App Pages</span>
+                                            <p class="text-small text-muted">Build detailed, functional web apps</p>
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
+
+
+                                        <a class="dropdown-item" href="pages-inner.html">
+                                            <span class="h6 mb-0">Inner Pages</span>
+                                            <p class="text-small text-muted">Complete your online presence</p>
+                                        </a>
+
+
+                                    </div>
+                                </li>
+                                {% endif %}
+                             
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="{{url_for('main.ask')}}" id="componentsDropdown"
+                                        role="button" data-toggle="dropdown">Ask</a>
+                                </li>
+                                {% if current_user.expert%}
+                                <li class="nav-item d-flex align-items-center">
+                                    <a href="{{url_for('main.unanswered')}}" class="nav-link">Unanswered</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+
+
+
+                            <ul class="navbar-nav">
+                                {%if not current_user.is_authenticated%}
+                                <li class="nav-item">
+                                    <a href="{{url_for('auth.register')}}" class="nav-link">Register </a>
+                                </li>
+                                <li class="nav-item d-flex align-items-center">
+                                    <a href="{{url_for('auth.login')}}" class="btn btn-primary">Login</a>
+                                </li>
+                                {% endif %}
+                                {% if  current_user.is_authenticated %}
+                                <li class="nav-item d-flex align-items-center">
+                                    <a href="{{url_for('main.logout')}}" class="btn btn-primary">logout</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+
+                        </div>
+                        <!--end nav collapse-->
+                    </nav>
+                </div>
+                <!--end of container-->
+            </div>
+        </div>
+        {% block content %}
+
+
+        {% endblock %}
+
+
+    </body>
+
+</html>

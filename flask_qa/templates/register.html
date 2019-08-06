@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% block title%} Register {% endblock%}
+{% block content%}
+<div class="main-container">
+    <!--end of section-->
+    <section class="flush-with-above bg-white">
+        <div class="container">
+            <h5>Register</h5>
+            <hr>    
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-12 text-center">
+                        <form method="POST", action="{{ url_for('auth.register' )}}">
+                                <div class="row mb-5">
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input id="username" name="name" type="text" class="form-control form-control-lg"
+                                                placeholder="Pick a username">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input id="password" name="password" type="password" class="form-control form-control-lg"
+                                                placeholder="Choose a password">
+                                            <small class="form-text">At least seven letters with one numeral</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <div class="form-group">
+                                            <label for="button">&nbsp;</label>
+                                            <button id="button" type="submit" class="btn btn-lg btn-block btn-primary">Register
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end of row-->
+                            </form>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+</div>
+
+{% endblock %}

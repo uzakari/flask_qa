@@ -1,0 +1,7 @@
+import os
+
+SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+SECRET_KEY = os.environ.get('SECRET_KEY')
+YOU_TUBE = os.environ.get('YOU_TUBE_API')
+SQLALCHEMY_TRACK_MODIFICATION = False 
+

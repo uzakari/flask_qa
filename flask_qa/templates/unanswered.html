@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+
+{% block title%} Unanswered Questions{% endblock%}
+{% block content%}
+<div class="main-container">
+
+    <!--end of section-->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center text-center section-intro">
+                <div class="col-12 col-md-9 col-lg-8">
+                    <h2 class="display-4">Questions For you</h2>
+                    <hr>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+            <ul class="nav" id="myTab" role="tablist">
+                {% for unanswered in unanswered_questions%}
+                <li>
+                    <a class="card" id="tab-2" data-toggle="tab"
+                        href=" {{url_for('main.answer', question_id=unanswered.id)}}" role="tab" aria-controls="profile"
+                        aria-selected="false">
+                        <div class="card-body">
+                            <h5>{{unanswered.question}}</h5>
+                            <p>
+                                Asked by: {{unanswered.asker.name}}
+                            </p>
+                        </div>
+                    </a>
+
+                </li>
+                {% endfor %}
+            </ul>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+
+</div>
+
+
+{% endblock%}

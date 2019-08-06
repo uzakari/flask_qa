@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% block title%} Users {% endblock %}
+{% block content%}
+<div class="main-container">
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-auto">
+                    <h3 class="h4">Users</h3>
+
+                </div>
+
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <small>Click to promote to expert</small>
+                    <ul class="feature-list feature-list-sm row">
+                        {% for user in user %}
+                        <li class="col-6 col-md-4 ">
+                            <a class="card text-center" href="{{url_for('main.promote', user_id = user.id)}}">
+                                <div class="card-body {% if user.expert %}expert{% endif %}">
+                                    <i class="icon-area-graph text-red display-4"></i>
+                                    <h6 class="title-decorative">{{user.name}}</h6>
+                                </div>
+                            </a>
+                        </li>
+                        {%endfor%}
+                    </ul>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <!--end of section-->
+
+
+</div>
+
+{% endblock %}
