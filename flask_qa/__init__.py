@@ -5,6 +5,7 @@ from .commands import create_tables
 from .models import User
 from .routes.main import main
 from .routes.auth import auth
+from .routes.plugable_views import apis
 
 
 def create_app(config_file='settings.py'):
@@ -27,5 +28,6 @@ def create_app(config_file='settings.py'):
 
     app.register_blueprint(main)
     app.register_blueprint(auth)
+    app.register_blueprint(apis)
     app.cli.add_command(create_tables)
     return app
